@@ -22,8 +22,7 @@ The links to the requirements are highlighted<br>
 Install [node.js](https://nodejs.org/en) to run this application<br>
 you need to run [npm init](https://docs.npmjs.com/cli/v10/commands/npm-init) for your JSON Database <br>
 Install Express.js on the command line [express.js](https://www.npmjs.com/package/)<br>
-Install uuid (Universally Unique IDentifier) to create an Unique id for each object here - [uuid](https://www.npmjs.com/package/uuid)<br>
-Deploy to Heroku on the front end [Heroku](https://www.heroku.com/)
+
 
 ## Usage
 This application is used to take and save notes
