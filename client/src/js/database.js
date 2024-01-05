@@ -13,9 +13,44 @@ const initdb = async () =>
   });
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (content) => console.error('putDb not implemented');
+export const putDb = async (content) => {
+  console.log('putDb to the database');
 
+  // Create a connection to the database and version we want to use
+  const jateDb = await openDB('jate',1);
+
+  // Create new transaction and specify database and data privileges
+  const tx = jateDb.transaction('jate', 'readwrite');
+
+  // Open desired object store
+  const store = tx.objectStore('jate');
+  // Use .add() method on the store and pass in the content
+  const request = store.put({ id: 1, value: content });
+  // Get the confirmation of the request
+  const result = await request;
+  console.log('Data saved to database', result);
+}
 // TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => console.error('getDb not implemented');
+export const getDb = async () => {
+ console.log('Get All from jateDb');
 
+// Create a connection to the database database and version we want to use
+ const jateDb = await openDB('jateDb');
+
+// Create a new transaction and specify the database and data privileges
+ const tx = jateDb.transaction('jate', 'readonly');
+
+// Open up the desired object store
+ const store = tx.objectStore('jate', 1);
+// Create a request to retrieve data from the object store 
+ const request = store.get(1);
+
+// Execute the request and wait for the result 
+ const result = await request;
+// Use the ternary conditional operator to log a message based on the result
+ result
+// ? similar to if true statement, : similar to else statment 
+ ? console.log('Data retrieved from the jateDb', result)
+ : console.log('Data not found in DB');
+};
 initdb();
